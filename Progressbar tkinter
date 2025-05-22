@@ -1,0 +1,40 @@
+from tkinter import*
+from tkinter.ttk import*
+
+root = Tk()
+root.geometry("500x500")
+progress = Progressbar(root,orient = HORIZONTAL,length = 300,mode = 'determinate')
+
+def bar():
+    import time  
+    progress['value'] = 20
+    root.update_idletasks()
+    time.sleep(1)
+
+    progress['value'] = 40
+    root.update_idletasks()
+    time.sleep(1)
+
+    progress['value'] = 60
+    root.update_idletasks()
+    time.sleep(1)
+
+    progress['value'] = 80
+    root.update_idletasks()
+    time.sleep(1)
+
+    progress['value'] = 100
+
+btn = Button(root,text = 'click',command=bar)
+btn.pack(pady=50)
+
+
+
+progress.pack(pady=75)
+
+#creating spin box
+
+spinbox = Spinbox(root,from_ = 0,to = 10,increment = 0.5,format = '%0.5f') # %0.xf number of digits after the decimal
+spinbox.pack(pady = 100)
+
+root.mainloop()
