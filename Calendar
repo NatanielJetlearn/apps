@@ -1,0 +1,38 @@
+from tkinter import*
+#from tkinter.ttk import*
+import calendar
+def showCal():
+    new_gui = Tk()
+    new_gui.config(background = 'white')
+    new_gui.title("Calendar")
+    new_gui.geometry('550x600')
+    fetch_year = int(Yearfield.get())
+    cal_content = calendar.calendar(fetch_year)
+    cal_year = Label(new_gui,text = cal_content,font = "consolas 10 bold")
+    cal_year.grid(row = 5, column = 1,padx = 20)
+    new_gui.mainloop()
+
+
+# Driver code
+
+if __name__ == "__main__":
+    root = Tk()
+    root.title('Calendar')
+    Cal = Label(root,text = 'Calendar', bg= 'blue',fg = 'Red',font = ("times",28,'bold'))
+    Year = Label(root,text = 'Year',bg = 'blue',fg = 'Red')
+    Yearfield = Entry(root,width = 30)
+
+    btnshow = Button(root,text = 'Show',command = showCal)
+    btnexit = Button(root,text = 'Exit',command = exit)
+
+    Cal.grid(row = 1,column = 5)
+    Year.grid(row = 4, column = 5)
+    Yearfield.grid(row = 7,column = 5)
+    btnshow.grid(row = 10,column = 4)
+    btnexit.grid(row = 10,column = 6)
+
+    root.mainloop()
+
+     
+
+
