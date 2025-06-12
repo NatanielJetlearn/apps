@@ -1,0 +1,48 @@
+from tkinter import*
+
+root = Tk()
+root.geometry('500x500')
+root.title('Converter')
+root.config(background = 'blue')
+
+def from_dollar():
+    pound = float(input_value.get()) * 0.76
+
+    pesos = float(input_value.get()) * 19.30
+
+    euro = float(input_value.get()) * 0.91
+
+    Pound_box.delete('1.0',END)
+    Pound_box.insert(END,pound)
+    Pesos_box.delete('1.0',END)
+    Pesos_box.insert(END,pesos)
+    Euro_box.delete('1.0',END)
+    Euro_box.insert(END,euro)
+
+# designing part
+dollars = Label(root,text = 'Dollars',fg = 'black',bg = 'white')
+pounds = Label(root,text = 'Pounds', fg = 'black', bg = 'white')
+pesos = Label(root,text = 'Pesos', fg = 'black', bg = 'white')
+euro = Label(root,text = 'Euro', fg = 'black', bg = 'white')
+
+btn = Button(root,text = 'Convert',bd = 5,fg = 'white',bg = 'black',command = from_dollar)
+
+input_value = IntVar()
+Dollars_box = Entry(root, width = 30,textvariable = input_value)
+
+Pound_box = Text(root,width = 30,height = 2,fg = 'red',bg = 'white')
+Pesos_box = Text(root,width = 30,height = 2,fg = 'red',bg = 'white')
+Euro_box = Text(root,width = 30,height = 2,fg = 'red',bg = 'white')
+
+
+dollars.grid(row = 2,column = 2,pady = 15,padx = 20)
+Dollars_box.grid(row = 2,column = 5,pady = 15,padx = 20)
+btn.grid(row = 2, column = 7,pady = 15,padx = 20)
+pounds.grid(row = 5,column = 2,pady = 15)
+pesos.grid(row = 5,column = 5,pady = 15, padx = 20)
+euro.grid(row = 5, column = 7,pady = 15, padx = 20)
+Pound_box.grid(row = 7,column = 2,pady = 15, padx = 20)
+Pesos_box.grid(row = 7,column = 5,pady = 15, padx = 20)
+Euro_box.grid(row = 7,column = 7,pady = 15, padx = 20)
+
+root.mainloop()
