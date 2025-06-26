@@ -46,7 +46,23 @@ def get_player_choice(player_input):
      
      if player_input == computer_input:
          tie()
-     if
+     if player_input[1] == 0:
+         if(computer_input[1] == 1):
+             computer_wins()
+         elif(computer_input[1] == 2):
+             player_wins()
+     elif player_input[1] == 1:
+         if(computer_input[1] == 0):
+             player_wins()
+         elif(computer_input[1] == 2):
+             computer_wins()
+     elif player_input[1] == 2:
+         if(computer_input[1] == 0):
+             computer_wins()
+         elif(computer_input[1] == 1):
+             player_wins()
+             
+     
 
 
 
@@ -63,15 +79,15 @@ player_options = Label(input_frame,text = 'Your Options: ',font = app_font,bg = 
 
 player_options.grid(row = 0,column = 0,pady = 8)
 rock_btn = Button(input_frame,text = 'Rock',width = 15,bd = 3, bg = 'white',
-                fg = 'black',command = None)
+                fg = 'black',command = lambda: get_player_choice(options[0]))
 rock_btn.grid(row = 1,column = 1,pady = 5,padx = 8)
 
 paper_btn = Button(input_frame, text = "Paper",width = 15,bd = 3,bg = 'white',
-                   fg = 'black',command = None)
+                   fg = 'black',command = lambda: get_player_choice(options[1]))
 paper_btn.grid(row = 1, column = 2,pady = 5,padx= 8)
 
 scissors_btn = Button(input_frame, text = 'Scissors',width = 15, bd = 3, bg = 'white',
-                      fg = 'black',command = None)
+                      fg = 'black',command = lambda: get_player_choice(options[2]))
 scissors_btn.grid(row = 1, column =3, pady = 5,padx = 8)
 
 score_label = Label(input_frame,text = 'Score : ',font = app_font,bg = 'white',fg = 'black')
@@ -89,5 +105,3 @@ computer_score_label.grid(row = 4,column = 2, pady = 5, padx = 5)
 
 
 root.mainloop()
-
-
