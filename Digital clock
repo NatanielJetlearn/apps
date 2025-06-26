@@ -1,0 +1,22 @@
+from tkinter import*
+import random
+from tkinter.ttk import*
+from time import strftime
+
+root = Tk()
+root.geometry("1300x200")
+root.title('Digital Clock')
+root.config(background = 'black')
+
+def time():
+    # capital letters A make full names and lowercase a make only first digits
+    string = strftime('%H: %M: %S %p %b %a') # strftime is used to get your system time
+    lbl.config(text = string)
+    lbl.after(1000,time) # updates every 1000 miliseconds 
+
+lbl = Label(root,font = ('Calibri',90,'bold'),background = 'black',foreground = 'yellow')
+lbl.pack(anchor = 'center')
+time()
+
+
+root.mainloop()
