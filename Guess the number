@@ -1,0 +1,44 @@
+from tkinter import*
+import random
+import math
+import tkinter.messagebox
+
+root = Tk()
+root.geometry('350x260')
+root.title('Guess The Number')
+number = random.randint(1,20)
+def check_num():
+    guess = text_guess.get()
+    guess = int(guess)
+    if guess > number :
+        tkinter.messagebox.showinfo("High","Your guess is too high") 
+    if number > guess :
+        tkinter.messagebox.showinfo("Low","Your guess is too low")
+    if number ==  guess :
+        tkinter.messagebox.showinfo("Good","You guessed correctly")
+
+def btn_confirm():
+    myName = text_name.get()
+    tkinter.messagebox.showinfo("WELCOME","Well" + myName +', I am thinking of a number between 1 and 20')
+
+#name
+welcomelabel = tkinter.Label(root, text= "Welcome to our game!")
+welcomelabel.pack()
+
+label_name = tkinter.Label(root, text = "What is your name?")
+label_name.place(x=10,y=60)
+
+text_name = tkinter.Entry(root, width = 20)
+text_name.place(x=120,y=60)
+
+btn_OK = tkinter.Button(root, text = 'OK',bd = 5,command = btn_confirm)
+btn_OK.place(x=180,y=150)
+label_guess = tkinter.Label(root,text = "Take a guess.")
+label_guess.place(x=10,y=105)
+text_guess = tkinter.Entry(root, width = 20)
+text_guess.place(x=120,y=105)
+btn_check = tkinter.Button(root,text = "Guess",bd = 5, command = check_num)
+btn_check.place(x=120,y=150)
+
+
+root.mainloop()
