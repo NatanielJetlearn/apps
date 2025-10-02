@@ -1,0 +1,40 @@
+from tkinter import*
+from tkinter.ttk import*
+
+root = Tk()
+root.geometry('450x360')
+root.title("Multiplication Table")
+root.configure(background= 'blue')
+
+title = Label(root,text= 'Mathematical Table')
+caption = Label(root, text = "Number and Range: ")
+title.grid(row = 0, column = 0,columnspan= 3,pady= 25)
+caption.grid(row = 1, column= 0,columnspan= 3, padx = 10)
+# combobox
+the_Num = IntVar()
+numbers = Combobox(root,textvariable=the_Num,width = 5)
+numbers.grid(row =1, column= 3,columnspan= 3)
+numbers['values']= tuple(range(501))
+
+# radio buttons
+endval = IntVar()
+r10 = Radiobutton(root, text = '10',variable= endval,value=10)
+r20 = Radiobutton(root, text = '20',variable= endval,value=20)
+r30 = Radiobutton(root, text = '30',variable= endval,value=30)
+endval.set(10)
+r10.grid(row=1,column = 6,padx= 5,pady= 5)
+r20.grid(row=2,column = 6,padx= 5,pady= 5)
+r30.grid(row=3,column = 6,padx= 5,pady = 5)
+
+def generateMulTable():
+    tables=""
+    for i in range(1,endval.get()+1):
+        tables += str(the_Num.get()) + " X " +str(i) + " =  "+str(the_Num.get()*i)+"\n"
+    table.configure(text=tables)
+
+btn = Button(root,text = "Generate",command=generateMulTable)
+btn.grid(row = 5,column= 3,padx = 6, pady=6)
+table = Label(root,anchor='center')
+table.grid(row = 10,column= 3,padx =6,pady =6)
+
+root.mainloop()
