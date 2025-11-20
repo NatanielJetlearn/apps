@@ -106,7 +106,7 @@ def pc():
 
 def get_text_pc(i,j,gb,l1,l2):
     global sign
-    if board[i][j] == ' ':
+    if board[i][j] == '':
         if sign % 2 == 0:
             l1.config(state=DISABLED)
             l2.config(state=ACTIVE)
