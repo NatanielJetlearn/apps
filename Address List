@@ -1,0 +1,64 @@
+from tkinter import*
+from tkinter.ttk import*
+
+mainwin = Tk()
+mainwin.title('Address Book')
+mainwin.geometry('500x600')
+
+
+
+
+
+
+
+
+# designing 
+bookName = Label(mainwin, text = 'My Address Book', width = 35)
+bookName.grid(row = 0,column= 1,pady= 10,columnspan = 3)
+
+open_button = Button(mainwin, text = 'Open', command= None)
+open_button.grid(row = 1, column= 2, pady= 10)
+
+book_list = Listbox(mainwin, width = 30, height=20)
+book_list.grid(row=2,column=2,columnspan=3,rowspan=5,padx=5)
+#book_list.bind('<<ListboxSelect>>',display)
+
+name_label = Label(mainwin, text = 'Name:')
+name_label.grid(row=2,column= 8,padx = 5)
+name = Entry(mainwin)
+name.grid(row= 2,column =10,padx =5)
+
+address_label = Label(mainwin, text = 'Address:')
+address_label.grid(row=3,column = 8, padx= 5)
+address = Entry(mainwin)
+address.grid(row = 3,column =  10,padx=5)
+
+mobile_label = Label(mainwin, text = 'Mobile:')
+mobile_label.grid(row=4,column = 8, padx= 5)
+mobile = Entry(mainwin)
+mobile.grid(row = 4,column =  10,padx=5)
+
+email_label = Label(mainwin, text = 'Email:')
+email_label.grid(row=5,column = 8, padx= 5)
+email = Entry(mainwin)
+email.grid(row = 5,column =  10,padx=5)
+
+birthday_label = Label(mainwin, text = 'Birthday:')
+birthday_label.grid(row=6,column = 8, padx= 5)
+birthday = Entry(mainwin)
+birthday.grid(row = 6,column =  10,padx=5)
+
+Edit_button = Button(mainwin, text= 'Edit',command = None)
+Edit_button.grid(row = 7,column = 2, padx = 3,pady =5 )
+
+Delete_button = Button(mainwin, text = 'Delete',command = None)
+Delete_button.grid(row= 7,column = 3, padx= 3, pady = 3)
+
+Add_button = Button(mainwin, text = 'Add',bd = 3)
+Add_button.grid(row = 7, column = 8,padx =3,pady =3)
+
+Save_button = Button(mainwin, text = 'Save',commannd = None)
+Save_button.grid(row = 7,column =  10, padx=3,pady=3)
+
+
+mainwin.mainloop()
