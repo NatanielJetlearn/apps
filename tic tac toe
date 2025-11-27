@@ -1,5 +1,6 @@
 from tkinter import*
-from random import*
+import random  #CORRECTION
+#from random import*
 from functools import partial
 from tkinter import messagebox
 from copy import deepcopy
@@ -77,7 +78,7 @@ def pc():
     possiblemove = []
     for i in  range(len(board)):
         for j in range(len(board[i])):
-            if board[i][j] == ' ':
+            if board[i][j] == '':  #CORRECTION from ' ' to ''
                 possiblemove.append([i,j])
     move = []
     if possiblemove == []:
@@ -96,6 +97,7 @@ def pc():
         if len(corner)>0:
             move = random.randint(0,len(corner)-1)
             return corner[move]
+        
         edge = []
         for i in possiblemove:
             if i in [[0,1],[1,0],[1,2],[2,1]]:
@@ -106,7 +108,7 @@ def pc():
 
 def get_text_pc(i,j,gb,l1,l2):
     global sign
-    if board[i][j] == '':
+    if board[i][j] == '':#CORRECTION from ' ' to ''
         if sign % 2 == 0:
             l1.config(state=DISABLED)
             l2.config(state=ACTIVE)
@@ -131,12 +133,14 @@ def get_text_pc(i,j,gb,l1,l2):
         gb.destroy()
         x = False
         box = messagebox.showinfo("It's A Draw")
+
     
     if(x):
-        if sign%2 != 0:
-            move = pc(move)
+        if sign % 2  != 0:
+            move = pc() ##CORRECTION
             button[move[0]][move[1]].config(state=DISABLED)
-            get_text_pc(move[0],move[1],gb,l1,l2)
+            get_text_pc(move[0],move[1], gb, l1, l2)
+            
 
 def gameboard_pc(game_board,l1,l2):
     global button
@@ -157,8 +161,10 @@ def withpc(game_board):
     game_board.destroy()
     game_board = Tk()
     game_board.title('Tic Tac Toe game')
-    l1 = Button(game_board,text = "Player : X", width=10,bg= 'Blue',fg="black")
-    l2 = Button(game_board,text="Pc : O",width=10,bg="Red",state=DISABLED)
+    l1 = Button(game_board,text = "Player : X", width=10,
+                bg= 'Blue',fg="black")
+    l2 = Button(game_board,text="Pc : O",
+                width=10,bg="Red",state=DISABLED)
     l1.grid(row=1,column=1)
     l2.grid(row=1,column=2)
     gameboard_pc(game_board,l1,l2)
@@ -169,7 +175,7 @@ def withplayer(game_board):
     game_board = Tk()
     game_board.title("Tic Tac Toe game")
     l1 = Button(game_board,text = "Player 1 : X", width=10,bg= 'Blue',fg="black")
-    l2 = Button(game_board,text="Player 2 : O",width=10,bg="Red",state=DISABLED)
+    l2 = Button(game_board,text="Player 2 : O",width=10,bg= "Red",state=DISABLED)
     l1.grid(row=1,column=1)
     l2.grid(row=1,column=2)
     gameboard_pl(game_board,l1,l2)
