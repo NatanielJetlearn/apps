@@ -21,7 +21,7 @@ def clearall():
 def update():
     key = name.get()
     if key == "":
-        messagebox.showinfo("Errir","Name cannot be empty")
+        messagebox.showinfo("Error","Name cannot be empty")
     else :
         if key not in myAddressBook.keys():
             book_list.insert(END,key)
@@ -66,11 +66,32 @@ def display(event):
     lbl.grid(row= 0,column= 0)
     lbl.configure(text=contact,background= 'red')
 
+
+def reset():
+    clearall()
+    book_list.delete(0,END)
+    myAddressBook.clear()
+    bookName.configure(text="My Address Book")
 def save():
-    pass
+    fout = asksaveasfile(defaultextension=".txt")
+    if fout :
+        print(myAddressBook,file=fout)
+        reset()
+    else :
+        messagebox.showinfo("Warning","Address Book not Saved")
 
 def openfile():
-    pass
+    global myAddressBook
+    reset()
+    fin = askopenfile(title="Open File")
+    if fin:
+        with open(fin.name,'r') as file:
+            myAddressBook = json.load(file)
+        for key in myAddressBook.keys():
+            book_list.insert(END,key)
+        bookName.configure(text=os.path.basename(file.name))
+    else :
+        messagebox.showinfo("Warning","No Address Book Opened")
 
 
 
@@ -79,12 +100,12 @@ def openfile():
 bookName = Label(mainwin, text = 'My Address Book', width = 35)
 bookName.grid(row = 0,column= 1,pady= 10,columnspan = 3)
 
-open_button = Button(mainwin, text = 'Open', command= None)
+open_button = Button(mainwin, text = 'Open', command= openfile)
 open_button.grid(row = 1, column= 2, pady= 10)
 
 book_list = Listbox(mainwin, width = 30, height=20)
 book_list.grid(row=2,column=2,columnspan=3,rowspan=5,padx=5)
-#book_list.bind('<<ListboxSelect>>',display)
+book_list.bind('<<ListboxSelect>>',display)
 
 name_label = Label(mainwin, text = 'Name:')
 name_label.grid(row=2,column= 8,padx = 5)
@@ -111,16 +132,16 @@ birthday_label.grid(row=6,column = 8, padx= 5)
 birthday = Entry(mainwin)
 birthday.grid(row = 6,column =  10,padx=5)
 
-Edit_button = Button(mainwin, text= 'Edit',command = None)
+Edit_button = Button(mainwin, text= 'Edit',command = edit)
 Edit_button.grid(row = 7,column = 2, padx = 3,pady =5 )
 
-Delete_button = Button(mainwin, text = 'Delete',command = None)
+Delete_button = Button(mainwin, text = 'Delete',command = delete)
 Delete_button.grid(row= 7,column = 3, padx= 3, pady = 3)
 
-Add_button = Button(mainwin, text = 'Add')
+Add_button = Button(mainwin, text = 'Add/update',command=update) 
 Add_button.grid(row = 7, column = 8,padx =3,pady =3)
 
-Save_button = Button(mainwin, text = 'Save',commannd = None)
+Save_button = Button(mainwin, text = 'Save',command = save)
 Save_button.grid(row = 7,column =  10, padx=3,pady=3)
 
 
