@@ -58,10 +58,10 @@ def display(event):
         key = book_list.get(index)
         contact= "NAME : "+key+"\n\n"
         details=myAddressBook[key]
-        contact+="ADDRESS : +details[0]+\n"
-        contact+="MOBILE : +details[1]+\n"
-        contact+="EMAIL : +details[2]+\n"
-        contact+="BIRTHDAY : +details[3]+\n"
+        contact+="ADDRESS :" +details[0]+"\n"
+        contact+="MOBILE :" +details[1]+"\n"
+        contact+="EMAIL :"+details[2]+"\n"
+        contact+="BIRTHDAY :" +details[3]+"\n"
     lbl=Label(newWindow)
     lbl.grid(row= 0,column= 0)
     lbl.configure(text=contact,background= 'red')
