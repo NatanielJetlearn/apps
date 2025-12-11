@@ -1,0 +1,13 @@
+from tkinter import*
+import random
+from tkinter import messagebox
+
+mainwin = Tk()
+
+answers = ["import","python","html","coding","software","personal computer","java","scratch","roblox","jetlearn","minecraft","tkinter"
+           "gameboard","anaconda","workspace","code","messagebox","entry box","buttons"]
+
+words = ["roptmi","hntypo","mlth","oigndc","aefostrw","laeprnos umpretoc","aajv","rctsha","oobxrl","rtnaeejl","matfreinrc","ternkti"
+         "oamaboegdr","cndaaano","sapkrewr","ecdo","ebeamoxssg","trbyo nxe","ostubtn"]
+
+num = random.randrange(0,len(words)+1)
