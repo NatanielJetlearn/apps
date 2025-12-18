@@ -20,12 +20,12 @@ l = Label(mainwin)
 def reset():
     global words,answers,num
     num = random.randrange(0,len(words)+1)
-    Label.config(text = words[num])
+    label.config(text = words[num])
     e1.delete(0,END)
 
 def default():
     global words,answers,num
-    Label.config(text = words[num])
+    label.config(text = words[num])
 
 def checkans():
     global answers,words,num,c,d,s,l
@@ -50,8 +50,8 @@ mainwin.title("Jumbleword game")
 mainwin.configure(bg = "black")
 
 Label(mainwin,text = "Let's play jumbleword Game",font = ("Verdana",28),bg = "black",fg = "white").pack(pady=5)
-Label = Label(mainwin, font = ("Verdana",22), bg = "black",fg = "white")
-Label.pack(pady = 30)
+label = Label(mainwin, font = ("Verdana",22), bg = "black",fg = "white")
+label.pack(pady = 30)
 ans = StringVar()
 e1 = Entry(mainwin,font = ("Verdana",20),textvariable= ans)
 e1.pack(ipady = 5,ipadx = 5)
