@@ -11,3 +11,53 @@ words = ["roptmi","hntypo","mlth","oigndc","aefostrw","laeprnos umpretoc","aajv"
          "oamaboegdr","cndaaano","sapkrewr","ecdo","ebeamoxssg","trbyo nxe","ostubtn"]
 
 num = random.randrange(0,len(words)+1)
+c = 0 # correct answer count
+d = 0 # total number of question attempted by the user
+s = "" # scorestring to display
+l = Label(mainwin)
+
+
+def reset():
+    global words,answers,num
+    num = random.randrange(0,len(words)+1)
+    Label.config(text = words[num])
+    e1.delete(0,END)
+
+def default():
+    global words,answers,num
+    Label.config(text = words[num])
+
+def checkans():
+    global answers,words,num,c,d,s,l
+    d = int(d)+1
+    var = e1.get() # get() is used  to retrieve the user input from e1
+    if var == answers[num]:
+        messagebox.showinfo("Congratulations!","It's the correct answer!")
+        c = int(c)+1
+    else :
+        messagebox.showerror("Wrong answer!","Try again!")
+    
+    s = "Score: "+ str(c)+"/"+str(d)
+    l.forget()
+    l = Label(mainwin,font = ("Verdana",22),text = s,
+                            bg = "black",fg = "white")
+    l.pack(side = LEFT)
+    reset()
+
+# designing part
+mainwin.geometry("700x500+500+150")
+mainwin.title("Jumbleword game")
+mainwin.configure(bg = "black")
+
+Label(mainwin,text = "Let's play jumbleword Game",font = ("Verdana",28),bg = "black",fg = "white").pack(pady=5)
+Label = Label(mainwin, font = ("Verdana",22), bg = "black",fg = "white")
+Label.pack(pady = 30)
+ans = StringVar()
+e1 = Entry(mainwin,font = ("Verdana",20),textvariable= ans)
+e1.pack(ipady = 5,ipadx = 5)
+
+Button(mainwin,text = "Click to Check",font = ("Comis sans ms",20),width = 12,bg = "white",fg = "black",relief  = GROOVE,command = checkans).pack(pady =5)
+Button(mainwin,text = "Click to Reset",font = ("Comic sans ms",20),width = 12,bg = "white",fg = "black",relief = GROOVE,command = reset).pack(pady = 5)
+
+default()
+mainwin.mainloop()
